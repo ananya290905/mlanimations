@@ -1,0 +1,16 @@
+Gradient Descent Explained
+
+Imagine you had to find the lowest point of this graph. [Show 3d graph with multiple peaks and dips].
+
+You might want to start at a random point and take a step towards the steepest way down till you have reached the bottom. This process is called gradient descent and can be described by thisequation. [Show gradient descent equation \(\theta _{\text{new}}=\theta _{\text{old}}-\alpha \nabla J(\theta )\)
+
+Here theta represents the parameters of our graph, alpha represents the learning rate aka how big of a step we take and \nabla J(\theta )\) the represents direction of the steepest ascent which is why we subtract it to go down. Let's try an example of a simpler 2d graph [shows y = x^2 graph].
+
+We start by assigning a random starting point say we start up here [shows high up on parabola on the left side]. Using derivatives [show tangent line gradient], the gradient of this point is negative meaning the slope is going down [show arrow going down to minimum]. If we take our starting point and subtract alpha multiplied by the NEGATIVE gradient, we move along the positive axis closer to the minimum [show new point still on the left side but lower].
+
+Well what if we had started on the right side of the curve. Let's try that again, here the gradient will be positive [show tangent gradient] as the slope is going up. If we take our current position and subtract alpha multiple by a positive gradient, we move closer to the minimum [show moving to closer on right side]. We continue this process until changes become negligible.
+
+Keep in mind that the alpha (step size) that you define affects this process. A step size too big? you might overshoot the minimum [show large step sizes], a step size too small? it might take ages to find your minimum [show small step sizes]. So it is essential, that you have an appropriate step size for this task. The starting point also has an effect on the minimum found, a different starting point may find a different local minimum [show 3d graph with two different peaks ended up in two different minimum]
+
+Well, how is this important in the context of machine learning? If this graph now represents the loss function (aka how wrong our current predictions are), we can use gradient descent to find the weights required to get the lowest loss. 
+
