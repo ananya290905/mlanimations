@@ -1,0 +1,37 @@
+In 2016, a computer program called AlphaGo defeated the world champion Lee Sedol in a board game called Go. [show alpha go and the guy]
+But how can a computer actually know which move is the best one to be played?
+
+The algorithm AlphaGo used was called MCTS or monte carlo tree search [show mcts which explands to show the full name], 
+well actually it used a more complex version of this algorithm but lets explore the basic idea with a game of tic tac toe.
+
+say the tic tac toe board looks like this, and it is the computers turn to make a move.
+the computer stores the current position and paths it has explored in a tree format [show tree with current state with 1 branch of depth 2 lets say and another of depth 1].
+
+MCTS works in four steps: selection, expansion, simulation, and backpropagation.
+
+we first start with selection, where starting from the root our current position, we select a child node until we reach one 
+that hasnt been fully expanded [show choosing hte depth 1 branch]. The way we select a particular node is called a heuristic.
+
+next we do expansion, by trying out an action on the child state, say we want to see what will happen if we put a cross on the top left
+[show action and expantion of branch with the board now having a cross on the top left]
+
+so this is the action we want to explore, and we want to find out that if we made this move, would we win or not, so we run
+a simulation, where we play out a bunch of games with randomised moves till we have reached a terminating state, in this case
+either a loss or a win. 
+
+say in our first simulation we got a win, this is good but it isnt reliable to believe just one simulation so we do multiple simulations
+lets say out of N simulations, we won 75% of them. great we can then write the reward of this node as 75 for example.
+
+so we know that if we make this action we get a reward of 75, lets tell the nodes above it in the path this so they can update
+their values, this is called backpropagation [show going up and increasing value since we win a lot in this case]. 
+
+great so we explored a new move and if we compare this path 
+and the other we can see that the reward for this path is higher than the other, 
+so the computer should favor this move. keep in mind, real implementations don't just look at win rate, they also factor in how many times
+a path has actually been explored, since a node we've only tried once could just be a lucky win.
+
+
+in theory, the computer would compute these values for all possible moves but since we dont have that much time and compute power
+the computer need to balance exploring new untried moves with exploiting the moves we already know are promising.
+
+this is called the exploration-exploitation tradeoff, and it shows up everywhere in reinforcement learning, not just MCTS
