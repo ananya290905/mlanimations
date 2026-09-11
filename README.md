@@ -6,5 +6,5 @@ Topics Covered So Far:
 
 1. Gradient Descent
 2. Classifiers
+3. Monte Carlo Tree Search
 
-Check Out the YouTube Channel here : https://www.youtube.com/@Vectorized-ML
